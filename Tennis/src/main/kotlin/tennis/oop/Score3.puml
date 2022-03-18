@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+
+abstract Score {
+    {abstract} display
+    isGame()
+    {abstract} next(win)
+}
+
+Score <|-left- Game : "        "
+Game : winner
+
+Score <|-- Forty
+Forty : player
+Forty : pointsOfOther
+
+Score <|- ByPoints
+ByPoints : pointsOfA
+ByPoints : pointsOfB
+
+Score <|-- Advance
+Advance : player
+
+Score <|-- Deuce
+class Deuce <<(O,cyan)>>
+ByPoints <|-- InitialScore
+class InitialScore <<O,cyan>>
+
+@enduml

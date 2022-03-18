@@ -1,0 +1,65 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract Score {
+    {abstract} +display: String
+    +isGame(): Boolean
+    {abstract} +next(win: Player): Score
+}
+
+enum Player {
+    {static} + A
+    {static} + B
+    +other(): Player
+}
+
+enum Points {
+    +number: Int
+    {static} +LOVE
+    {static} +FIFTEEN
+    {static} +THIRTY
+    +advance(): Points
+}
+
+Score <|-- Game
+class Game {
+   +display
+   +isGame()
+   +next(win)
+}
+Player <-- Game : winner
+
+Score <|-- Forty
+class Forty {
+   +display
+   +next(win)
+}
+Player <-- Forty : player
+Points <-- Forty : pointsOfOther
+
+Score <|-- ByPoints
+class ByPoints {
+   +display
+   -pointsOf(): Points
+   +next(win)
+}
+Points <-- ByPoints : pointsOfA
+Points <-- ByPoints : pointsOfB
+
+Score <|--- Advance
+class Advance {
+   +display
+   +next(win)
+}
+Player <-- Advance : player
+
+Score <|--- Deuce
+class Deuce <<(O,cyan)>> {
+   +display
+   +next(win)
+}
+
+ByPoints <|-- InitialScore
+class InitialScore <<O,cyan>>
+
+@enduml

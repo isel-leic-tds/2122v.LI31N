@@ -1,0 +1,18 @@
+ 
+- Make Invalid States Unrepresentable:
+ ByPoints("40-40") versus Deuce
+
+- class Any 
+ equals
+ hashCode
+ toString
+ 
+- enum internals
+ private constructor
+ companion objects
+ 
+- objects creation
+ globals
+ singleton
+ companion
+ 

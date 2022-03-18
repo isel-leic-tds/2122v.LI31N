@@ -3,7 +3,7 @@ package tennis.oop
 import tennis.Player
 
 enum class Points(val number: Int) {
-    LOVE(0), FIFTEEN(15), THIRTY(30), FORTY(40);
+    LOVE(0), FIFTEEN(15), THIRTY(30);  //, FORTY(40);
     fun advance() = values()[ordinal+1]  // throws IndexOutOfBounds
 }
 
@@ -19,12 +19,21 @@ private class Game(private val winner: Player) : Score() {
     override fun next(win: Player) = throw IllegalStateException()
 }
 
-class ByPoints (private val pointsOfA:Points, private val pointsOfB:Points) : Score() {
+class Forty(private val player: Player, private val pointsOfOther: Points) : Score() {
+    override val display =
+        if(player===Player.A) "40 - ${pointsOfOther.number}" else "${pointsOfOther.number} - 40"
+    override fun next(win: Player) = when {
+        win===player -> Game(win)
+        pointsOfOther===Points.THIRTY -> Deuce
+        else -> Forty(player, pointsOfOther.advance())
+    }
+}
+
+open class ByPoints (private val pointsOfA:Points, private val pointsOfB:Points) : Score() {
     override val display = "${pointsOfA.number} - ${pointsOfB.number}"
     private fun pointsOf(p: Player) = if (p===Player.A) pointsOfA else pointsOfB
     override fun next(win: Player) = when {
-        pointsOf(win)===Points.THIRTY && pointsOf(win.other())===Points.FORTY -> Deuce
-        pointsOf(win)===Points.FORTY -> Game(win)
+        pointsOf(win) === Points.THIRTY -> Forty(win, pointsOf(win.other()))
         else ->
             if (win===Player.A) ByPoints(pointsOfA.advance(), pointsOfB)
             else ByPoints(pointsOfA, pointsOfB.advance())
@@ -42,4 +51,4 @@ private object Deuce : Score() {
     override fun next(win: Player) = Advance(win)
 }
 
-val InitialScore = ByPoints(Points.LOVE, Points.LOVE)
+object InitialScore : ByPoints(Points.LOVE, Points.LOVE)

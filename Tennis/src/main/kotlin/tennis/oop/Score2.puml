@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+hide circles
+skinparam classAttributeIconSize 0
+
+abstract Score {
+    {abstract} +display: String
+    +isGame(): Boolean
+    {abstract} +next(win: Player): Score
+}
+
+Score <|-- Game
+Game : +winner: Player
+
+Score <|--- Forty
+Forty : +player : Player
+Forty : +pointsOfOther : Points
+
+Score <|-- ByPoints
+ByPoints : +pointsOfA: Points
+ByPoints : +pointsOfB: Points
+ByPoints : -pointsOf(): Points
+
+Score <|--- Advance
+Advance : +player: Player
+
+Score <|-- Deuce
+class Deuce <<object>>
+ByPoints <|-- InitialScore
+class InitialScore <<object>>
+
+@enduml
