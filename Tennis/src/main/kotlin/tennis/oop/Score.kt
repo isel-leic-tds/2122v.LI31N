@@ -2,15 +2,26 @@ package tennis.oop
 
 import tennis.Player
 
+/*
 enum class Points(val number: Int) {
     LOVE(0), FIFTEEN(15), THIRTY(30);  //, FORTY(40);
     fun advance() = values()[ordinal+1]  // throws IndexOutOfBounds
+}
+ */
+
+class Points private constructor(val number: Int) {
+    fun advance() = values[values.indexOfFirst { it.number == number }+1]
+    companion object {
+        private val values = listOf(Points(0),Points(15),Points(30))
+        val THIRTY = values.last()
+        val LOVE = values.first()
+    }
 }
 
 abstract class Score {
     abstract val display: String
     open fun isGame() = false
-    abstract fun next(win: Player) :Score
+    abstract fun next(win: Player): Score
 }
 
 private class Game(private val winner: Player) : Score() {
@@ -19,7 +30,7 @@ private class Game(private val winner: Player) : Score() {
     override fun next(win: Player) = throw IllegalStateException()
 }
 
-class Forty(private val player: Player, private val pointsOfOther: Points) : Score() {
+private class Forty(private val player: Player, private val pointsOfOther: Points) : Score() {
     override val display =
         if(player===Player.A) "40 - ${pointsOfOther.number}" else "${pointsOfOther.number} - 40"
     override fun next(win: Player) = when {

@@ -1,7 +1,8 @@
 package tennis
 
 //import tennis.first.*
-import tennis.oop.*
+//import tennis.oop.*
+import tennis.fp.*
 
 fun main() {
     var game : Score = InitialScore

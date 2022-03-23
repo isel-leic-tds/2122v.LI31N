@@ -1,7 +1,7 @@
 package tennis.tests
 
 
-data class A(val x: Int) :Any() {
+data class A(val x: Int)  {
     /*
     override fun equals(other: Any?): Boolean {
         println("equals $other")

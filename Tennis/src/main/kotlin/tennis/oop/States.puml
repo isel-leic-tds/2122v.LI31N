@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+'state Score {
+[*] -> ByPoints
+state ByPoints {
+  '[*] -> InitialState
+  ByPoints: pointsOfA: Points\npointsOfB: Points
+  'note right of InitialState : pointsOfA=LOVE\npointsOfB=LOVE
+}
+
+ByPoints -> ByPoints : next(win)\n[else]
+ByPoints --> Forty : next(win)\n[pointsOf(win)==THIRTY]
+
+Forty: player: Player\npointsOfOther: Points
+Forty -left-> Deuce : next(win)\n[win!=player\n&&\npointsOfOther==THIRTY]
+Forty -> Forty : next(win)\n[else]
+Forty --> Game : next(win)\n[win==player]
+
+Deuce --> Advantage: next(win)
+Advantage: of: Player
+Advantage -> Game :next(win)\n[win==player]
+Advantage -up-> Deuce :next(win)\n[else]
+
+Game: winner: Player
+Game -> [*]
+'}
+'[*] --> Score
+'Score --> [*]
+@enduml
