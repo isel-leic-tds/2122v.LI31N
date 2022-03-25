@@ -8,12 +8,12 @@ enum class Points(val number: Int) {
 }
 
 sealed class Score
-open class ByPoints(val pointsOfA: Points, val pointsOfB: Points) : Score()
-object Deuce : Score()
-class Game(val winner:Player) : Score()
-class Forty(val player: Player, val pointsOfOther: Points) :Score()
-class Advantage(val player: Player) : Score()
-object InitialScore : ByPoints(Points.LOVE, Points.LOVE)
+private data class ByPoints(val pointsOfA: Points, val pointsOfB: Points) : Score()
+private object Deuce : Score()
+private data class Game(val winner:Player) : Score()
+private data class Forty(val player: Player, val pointsOfOther: Points) :Score()
+private data class Advantage(val player: Player) : Score()
+val InitialScore: Score = ByPoints(Points.LOVE, Points.LOVE)
 
 fun Score.isGame() = this is Game
 
@@ -26,7 +26,7 @@ val Score.display get() = when(this) {
                 else "${pointsOfOther.number} - 40"
 }
 
-fun ByPoints.pointsOf(p: Player) = if (p===Player.A) pointsOfA else pointsOfB
+private fun ByPoints.pointsOf(p: Player) = if (p===Player.A) pointsOfA else pointsOfB
 
 fun Score.next(win: Player) = when(this) {
     is Game -> throw IllegalStateException()
