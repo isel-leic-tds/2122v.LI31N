@@ -23,7 +23,7 @@ fun readCommand(): LineCommand {
  * @return The command line recognized or null if the line is empty.
  */
 fun String.parseCommand(): LineCommand? {
-    val words = split(' ')
+    val words = trim().split(' ').filter { it.isNotBlank() }
     if (words.isEmpty()) return null
     val name = words[0].uppercase()
     val args = words.drop(1)

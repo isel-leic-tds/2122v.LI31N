@@ -29,7 +29,7 @@ abstract class Command {
 /**
  * Creates the associative map of game commands that associates the name of the command to its representation.
  */
-fun getCommands() = mapOf<String,Command>(
+fun getCommands() = mapOf(
     "GRID" to object:Command() {
         override fun action(game: Galo, args: List<String>) = game
         override fun show(game: Galo) { println("Grid") }
