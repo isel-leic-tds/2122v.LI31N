@@ -22,4 +22,22 @@ class BoardTest {
         assertEquals(Player.CROSS, board.get(Position(1,1)))
         assertEquals(null, board.get(Position(0,0)))
     }
+    @Test
+    fun `Winner diagonal 1`() {
+        assertEquals(Player.CROSS, plays(0,1,4,3,8).winner)
+    }
+    @Test
+    fun `Winner diagonal 2`() {
+        assertEquals(Player.CROSS, plays(2,0,4,1,6).winner)
+    }
+    @Test
+    fun `Winner line`() {
+        assertEquals(Player.CROSS, plays(3,0,4,1,5).winner)
+    }
+    @Test
+    fun `Winner column`() {
+        assertEquals(Player.CROSS, plays(0,1,3,2,6).winner)
+    }
+    private fun plays(vararg indexes: Int) =
+        indexes.fold(Board()) { board, idx -> board.addMove(Position.values[idx]) }
 }

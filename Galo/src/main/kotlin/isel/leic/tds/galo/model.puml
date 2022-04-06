@@ -1,0 +1,29 @@
+@startuml
+
+hide empty members
+
+enum Player {
+{static} CROSS
+{static} CIRCLE
+}
+
+class Position {
+  index: Int
+  {static} values: List<Position>
+}
+
+class Move
+Position <-up- Move :pos
+Player <-up- Move :player
+
+class Board
+Board *- "0..*" Move :"moves     "
+Board -> "1" Player :turn
+Board -> "0..1" Player :winner
+
+class Galo
+Galo : name: String
+Board -down-* Galo :board
+Galo -up-> Player :turn
+
+@enduml

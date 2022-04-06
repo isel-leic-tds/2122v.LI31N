@@ -4,7 +4,7 @@ import isel.leic.tds.galo.model.*
 import isel.leic.tds.galo.ui.*
 
 fun main() {
-    var game = Galo()
+    var game: Galo? = null
     val cmds = getCommands()
     while (true) {
         val (name,args) = readCommand()
