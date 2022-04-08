@@ -1,6 +1,7 @@
 package isel.leic.tds.galo.ui
 
 import isel.leic.tds.galo.model.*
+import isel.leic.tds.galo.storage.Storage
 
 /**
  * Represents a command.
@@ -29,13 +30,13 @@ abstract class Command {
 /**
  * Creates the associative map of game commands that associates the name of the command to its representation.
  */
-fun getCommands() = mapOf(
+fun getCommands(st: Storage) = mapOf(
     "GRID" to object:Command() {
         override fun action(game: Galo?, args: List<String>) = game
     },
     "PLAY" to object:Command() {
         override fun action(game: Galo?, args: List<String>): Galo {
-            checkNotNull(game) { "Game unstarted" }
+            checkNotNull(game) { "Game not started yet" }
             require(args.isNotEmpty()) { "Missing position" }
             val pos = args[0].toIntOrNull()?.toPositionOrNull() ?:
                        throw IllegalArgumentException("Illegal position ${args[0]}")
@@ -51,7 +52,7 @@ fun getCommands() = mapOf(
     "START" to object:Command() {
         override fun action(game: Galo?, args: List<String>): Galo {
             require(args.isNotEmpty()) { "Missing game name" }
-            check(game==null) { "game started" }
+            check(game==null) { "Game already started" }
             return Galo(Board(),Player.CROSS,args[0])
         }
         override val argsSyntax = "<gameName>"

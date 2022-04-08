@@ -1,0 +1,16 @@
+@startuml
+
+hide empty members
+
+interface Storage {
+  {abstract} start(name: String) :Player
+  {abstract} save(game: Galo)
+  {abstract} load(game: Galo): Galo
+}
+
+class MongoStorage implements Storage {
+  start(name: String) :Player
+  save(game: Galo)
+  load(game: Galo): Galo
+}
+@enduml

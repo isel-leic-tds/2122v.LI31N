@@ -24,6 +24,6 @@ Board -> "0..1" Player :winner
 class Galo
 Galo : name: String
 Board -down-* Galo :board
-Galo -up-> Player :turn
+Galo -up-> Player :player
 
 @enduml
