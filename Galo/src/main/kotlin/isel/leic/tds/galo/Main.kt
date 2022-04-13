@@ -1,6 +1,7 @@
 package isel.leic.tds.galo
 
 import isel.leic.tds.galo.model.*
+import isel.leic.tds.galo.storage.FileStorage
 import isel.leic.tds.galo.storage.MongoStorage
 import isel.leic.tds.galo.ui.*
 import isel.leic.tds.mongoDB.MongoDriver
@@ -11,7 +12,7 @@ fun main() {
         // The game state (mutability point)
         var game: Galo? = null
         // Table of commands to use
-        val cmds = getCommands(MongoStorage(drv))
+        val cmds = getCommandsFP( MongoStorage(drv) ) //FileStorage() )
 
         // Command execution loop.
         while (true) {

@@ -1,6 +1,5 @@
 package isel.leic.tds.mongoDB
 
-
 import com.mongodb.*
 import com.mongodb.client.*
 import org.litote.kmongo.*

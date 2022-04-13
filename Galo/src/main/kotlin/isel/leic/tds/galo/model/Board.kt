@@ -33,6 +33,8 @@ fun Int.toPositionOrNull() =
     if (this in 0 until BOARD_DIM*BOARD_DIM) Position.values[this]
     else null
 
+fun Int.toPosition() = toPositionOrNull() ?: error("Invalid position")
+
 /**
  * Represents a move made by one of the players.
  * @property pos The move position on the grid.
@@ -72,7 +74,7 @@ fun Board.addMove(pos: Position): Board =
  * Returns the player who played in position [pos]
  * @return The player or null if position [pos] is free
  */
-fun Board.get(pos: Position): Player? =
+operator fun Board.get(pos: Position): Player? =
     moves.firstOrNull { it.pos===pos }?.player
 
 /**

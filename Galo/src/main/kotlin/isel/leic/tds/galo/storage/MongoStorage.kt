@@ -31,9 +31,7 @@ class MongoStorage(private val driver: MongoDriver) : Storage {
     override fun load(game: Galo): Galo {
         val doc = col.getDocument(game.name)
         checkNotNull(doc) { "no document in load" }
-        if (doc.moves.size == game.board.moves.size) return game
-        val pos = doc.moves.last().toPositionOrNull() ?:
-            error("invalid position in laoad")
-        return game.copy( board = game.board.addMove(pos))
+        return if (doc.moves.size == game.board.moves.size) game
+        else game.copy( board = game.board.addMove(doc.moves.last().toPosition()))
     }
 }

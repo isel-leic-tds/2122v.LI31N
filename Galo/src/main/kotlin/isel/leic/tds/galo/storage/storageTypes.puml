@@ -3,14 +3,30 @@
 hide empty members
 
 interface Storage {
-  {abstract} start(name: String) :Player
-  {abstract} save(game: Galo)
-  {abstract} load(game: Galo): Galo
+  {abstract} +start(name: String) :Player
+  {abstract} +save(game: Galo)
+  {abstract} +load(game: Galo): Galo
 }
 
 class MongoStorage implements Storage {
-  start(name: String) :Player
-  save(game: Galo)
-  load(game: Galo): Galo
+  -col: Collection<Doc>
+  +start(name: String) :Player
+  +save(game: Galo)
+  +load(game: Galo): Galo
 }
+MongoDriver --o MongoStorage :-driver
+MongoStorage -> Doc
+class Doc {
+  _id: String
+  moves: List<Int>
+}
+
+
+class FileStorage implements Storage {
+  -getFile(name: String)
+  +start(name: String) :Player
+  +save(game: Galo)
+  +load(game: Galo): Galo
+}
+java.io.File <.. FileStorage
 @enduml
