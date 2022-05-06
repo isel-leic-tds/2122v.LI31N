@@ -5,38 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3028152-23f2-42da-9b6e-9a0baecff0ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/GaloDesktop_jvm_1_0_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/Commands.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/MainConsole.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/model.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/model/Board.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/model/Galo.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/FileStorage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/MongoStorage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/Storage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/storageTypes.puml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Actions.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/CommandsFP.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/CommandsOO.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Input.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Output.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/mongoDB/mongoUtils.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/resources/circle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/resources/cross.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Board.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/DialogName.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GaloApp.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GameState.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Menu.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Status.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/Commands.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/MainConsole.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Actions.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/CommandsFP.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/CommandsOO.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Input.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Output.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +30,14 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -64,16 +55,16 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "D:/Aulas/TDS/22-22/LI31N/Code/GaloDesktop/src/jvmMain/resources"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Aulas/TDS/22-22/LI31N/Code/GaloDesktop/src/jvmMain/resources&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Aulas\TDS\22-22\LI31N\Code\GaloDesktop\src\jvmMain\resources" />
@@ -82,6 +73,9 @@
   </component>
   <component name="RunManager">
     <configuration name="MainKt" type="JetRunConfigurationType" singleton="false" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="MONGO_CONNECTION" value="mongodb+srv://user_tds:tds2122@cluster0.74mwi.mongodb.net/galo?retryWrites=true&amp;w=majority" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="GaloDesktop.jvmMain" />
       <shortenClasspath name="NONE" />

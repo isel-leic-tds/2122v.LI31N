@@ -26,86 +26,10 @@ import isel.leic.tds.galo.storage.FileStorage
 import isel.leic.tds.galo.storage.MongoStorage
 import isel.leic.tds.galo.storage.Storage
 import isel.leic.tds.mongoDB.MongoDriver
+import tds.galo.ui.GaloApp
 
-const val CELL_SIZE = 80
 
-@Composable
-fun CellView(player: Player?, onClick: () -> Unit) {
-    val imageName = when(player) {
-        Player.CIRCLE -> "circle"
-        Player.CROSS -> "cross"
-        else -> {
-            Box(Modifier
-                .size(CELL_SIZE.dp).background(Color.White)
-                .clickable( onClick = onClick )
-            )
-            return
-        }
-    }
-    Image(painterResource("$imageName.png"),imageName,
-        Modifier.size(CELL_SIZE.dp).background(Color.White))
-}
-
-@Composable
-fun BoardView(board: Board?, onClick: (Position)->Unit) {
-    Column(Modifier.background(Color.Black)) {
-        repeat(BOARD_DIM) { line ->
-            if (line!=0) Spacer(Modifier.height(4.dp))
-            Row {
-                repeat(BOARD_DIM) { col ->
-                    if (col!=0) Spacer(Modifier.width(4.dp))
-                    val pos = Position(line,col)
-                    CellView(board?.get(pos)) {
-                        onClick(pos)
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun StatusView(game: Galo?) {
-    Text("Status")
-}
-
-@Composable
-fun FrameWindowScope.GaloMenu(
-    onExit: ()->Unit, onStart: ()->Unit, onRefresh: ()->Unit
-) {
-    MenuBar {
-        Menu("Game") {
-            Item("Start", onClick = onStart)
-            Item("Refresh", onClick = onRefresh)
-            Item("Exit", onClick = onExit)
-        }
-    }
-}
-
-@Composable
-@Preview
-fun FrameWindowScope.GaloApp(storage: Storage, onExit: ()->Unit ) {
-    var game by remember { mutableStateOf<Galo?>(null) }
-    MaterialTheme {
-        GaloMenu(
-            onExit = onExit,
-            onStart = { game = startGame("game1",storage) },
-            onRefresh = { game?.let { game = storage.load(it) } }
-        )
-        Column {
-            BoardView(game?.board) { pos ->
-                game?.let {
-                    val (g, error) = it.play(pos, storage)
-                    if (error==PlayError.NONE)
-                        game = g
-                }
-            }
-            StatusView(game)
-        }
-    }
-}
-
-fun main()  { // = MongoDriver().use { drv ->
+fun main() { // = MongoDriver().use { drv ->
     application(exitProcessOnExit = false) {
         Window(
             onCloseRequest = ::exitApplication,
