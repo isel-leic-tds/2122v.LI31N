@@ -32,6 +32,7 @@ import tds.galo.ui.GaloApp
 fun main() { // = MongoDriver().use { drv ->
     application(exitProcessOnExit = false) {
         Window(
+            title = "TDS Galo",
             onCloseRequest = ::exitApplication,
             state = WindowState(
                 position = WindowPosition(Alignment.Center),

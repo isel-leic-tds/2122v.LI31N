@@ -1,24 +1,19 @@
 package tds.galo.ui
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.DpSize
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogState
+import androidx.compose.ui.*
+import androidx.compose.ui.unit.*
+import androidx.compose.ui.window.*
 
+/**
+ * Window to edit the name of the game to start.
+ * Has the buttons "Start" and "Cancel" and receives as parameters the functions [onCancel] and [onStart].
+ * Is a stateful composable to store the name during editing.
+ */
 @Composable
-fun DialogName( onCancel: ()->Unit, onStart: (String)->Unit) = Dialog(
+fun DialogName(onCancel: ()->Unit, onStart: (String)->Unit) = Dialog(
     onCloseRequest = onCancel,
     title = "Game name",
     state = DialogState( height = Dp.Unspecified, width = 350.dp)

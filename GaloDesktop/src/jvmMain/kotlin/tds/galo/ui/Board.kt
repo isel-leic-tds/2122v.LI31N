@@ -11,24 +11,32 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import isel.leic.tds.galo.model.*
 
-const val CELL_SIZE = 80
+const val CELL_SIZE = 120
 
+/**
+ * Shows a cell of the game grid with the corresponding move [player] or empty.
+ * Executes [onClick] if there is a click in the area.
+ */
 @Composable
-fun CellView(player: Player?, onClick: () -> Unit) {
+fun CellView(player: Player?, onClick: (()->Unit)?) {
     val modifier = Modifier.size(CELL_SIZE.dp).background(Color.White)
-    val imageName = when(player) {
-        Player.CIRCLE -> "circle"
-        Player.CROSS -> "cross"
-        else -> {
-            Box( modifier.clickable( onClick = onClick ) )
-            return // ATENÇÃO: Isto não é boa prática
+    Box( if (onClick==null) modifier else modifier.clickable(onClick = onClick) ) {
+        player?.let {
+            val imageName = when (it) {
+                Player.CIRCLE -> "circle"
+                Player.CROSS -> "cross"
+            }
+            Image(painterResource("$imageName.png"), imageName, Modifier.fillMaxSize())
         }
     }
-    Image(painterResource("$imageName.png"),imageName, modifier)
 }
 
+/**
+ * Shows the [board] grid of the game.
+ * Calls [onClick] if one cell grid was clicked.
+ */
 @Composable
-fun BoardView(board: Board?, onClick: (Position)->Unit) {
+fun BoardView(board: Board?, onClick: ((Position)->Unit)?) {
     Column(Modifier.background(Color.Black)) {
         repeat(BOARD_DIM) { line ->
             if (line!=0) Spacer(Modifier.height(4.dp))
@@ -36,9 +44,11 @@ fun BoardView(board: Board?, onClick: (Position)->Unit) {
                 repeat(BOARD_DIM) { col ->
                     if (col!=0) Spacer(Modifier.width(4.dp))
                     val pos = Position(line,col)
-                    CellView(board?.get(pos)) {
-                        onClick(pos)
-                    }
+                    val fx: ()->Unit = { onClick?.invoke(pos) }
+                    CellView(
+                        board?.get(pos),
+                        if (onClick!=null) fx else null
+                    )
                 }
             }
         }
