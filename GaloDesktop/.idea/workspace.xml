@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3028152-23f2-42da-9b6e-9a0baecff0ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/g1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/DialogMessage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Board.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/DialogName.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/DialogName.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GaloApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GaloApp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GameState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GameState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Menu.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Menu.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Status.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Status.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
