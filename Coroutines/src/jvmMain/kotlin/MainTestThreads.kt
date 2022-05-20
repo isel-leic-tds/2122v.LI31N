@@ -1,6 +1,5 @@
 import kotlin.concurrent.thread
 
-
 fun main() {
     var count = 10
     repeat(count) {
