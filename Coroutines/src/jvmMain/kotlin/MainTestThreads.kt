@@ -4,7 +4,7 @@ fun main() {
     var count = 10
     repeat(count) {
         thread {
-            Thread.sleep(3000L+it*20)
+            Thread.sleep(3000L+it*10)
             val x = count
             println("end $it count=$x")
             count = x-1

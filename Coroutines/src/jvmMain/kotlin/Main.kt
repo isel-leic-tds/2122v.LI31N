@@ -15,48 +15,54 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
-import java.awt.EventQueue
-import javax.swing.SwingUtilities
-import kotlin.concurrent.thread
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Composable
 @Preview
 fun App() {
     var value by remember { mutableStateOf(0) }
+    var job by remember { mutableStateOf<Job?>(null) }
+    val scope = rememberCoroutineScope()
     MaterialTheme {
         Column( horizontalAlignment = Alignment.CenterHorizontally ) {
-            log("App Column")
             Text("Counter = $value")
             Row(
                 Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Button(onClick = {
-                    log("Increment")
+                    //log("Increment")
                     value++
                 }) { Text("Increment") }
-                Button(onClick = {
+                Button(enabled = job==null, onClick = {
                     log("Compute")
-                    computeValue(value) {
-                        EventQueue.invokeLater {
-                            log("Apply computed value")
-                            value += it
-                        }
+                    job = scope.launch {
+                        value += computeValue(value)
+                        job = null
                     }
                 }) { Text("Compute value")}
+                Button(enabled = job!=null, onClick ={
+                    job?.cancel()
+                    job = null
+                })  { Text("Cancel")}
             }
         }
     }
 }
 
-fun computeValue(n: Int, oper: (Int)->Unit) {
-    log("Compute value start")
-    thread(name = "Compute $n") {
+suspend fun computeValue(n: Int): Int {
+    log("ComputeValue start")
+    val res = withContext(Dispatchers.IO) {
         log("Compute thread")
         Thread.sleep(5000)
-        oper( (1..10).random() )
+        log("After sleep")
+        (1..10).random()
     }
     log("ComputeValue end")
+    return res
 }
 
 fun log(message: String) =
@@ -66,7 +72,7 @@ fun main() {
     log("Start App")
     application(exitProcessOnExit = false) {
         Window(
-            state = WindowState(height = Dp.Unspecified, width = 300.dp),
+            state = WindowState(height = Dp.Unspecified, width = 400.dp),
             onCloseRequest = ::exitApplication
         ) {
             App()

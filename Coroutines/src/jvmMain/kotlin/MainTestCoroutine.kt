@@ -7,7 +7,7 @@ fun main() {
     runBlocking {
         repeat(count) {
             launch {
-                delay(3000L + it * 20)
+                delay(3000L + it * 10)
                 val x = count
                 println("end $it count=$x")
                 count = x - 1
