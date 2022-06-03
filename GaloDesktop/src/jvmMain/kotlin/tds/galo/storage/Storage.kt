@@ -13,16 +13,16 @@ interface Storage {
      * @param name The name of the game.
      * @return The player on this side of the game.
      */
-    fun start(name: String) :Player
+    suspend fun start(name: String) :Player
 
     /**
      * Update game state in database.
      * @param game Game information to store (including game name)
      */
-    fun save(game: Galo)
+    suspend fun save(game: Galo)
 
     /**
      * Loads the new game state from the information stored in the database.
      */
-    fun load(game: Galo): Galo
+    suspend fun load(game: Galo): Galo
 }

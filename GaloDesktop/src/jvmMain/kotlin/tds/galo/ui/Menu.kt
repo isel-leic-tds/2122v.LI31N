@@ -13,6 +13,7 @@ fun FrameWindowScope.GaloMenu( state: GameState, onExit: ()->Unit) {
     MenuBar {
         Menu("Game") {
             Item("Start", enabled = state.game==null, onClick = { state.start() } )
+            // TODO: Comment next line when auto-refresh is implemented.
             Item("Refresh", enabled = state.game!=null, onClick = { state.refresh() })
             Item("Exit", onClick = onExit)
         }

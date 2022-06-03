@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.window.FrameWindowScope
 import isel.leic.tds.galo.storage.Storage
@@ -16,7 +17,8 @@ import isel.leic.tds.galo.storage.Storage
  */
 @Composable
 fun FrameWindowScope.GaloApp(storage: Storage, onExit: ()->Unit ) {
-    val state = remember { GameState(storage) } // State of UI (ViewModel)
+    val scope = rememberCoroutineScope() // Scope for coroutines used in GameState
+    val state = remember { GameState(storage,scope) } // State of UI (ViewModel)
     MaterialTheme {
         GaloMenu(state, onExit = onExit)
         if (state.openDialogName)

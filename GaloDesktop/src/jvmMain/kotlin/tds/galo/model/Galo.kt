@@ -1,6 +1,8 @@
 package isel.leic.tds.galo.model
 
 import isel.leic.tds.galo.storage.Storage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 /**
  * Represents the game from one player's point of view.
@@ -18,7 +20,7 @@ data class Galo(
  * @param st Access to persistent storage operations
  * @return The created game
  */
-fun startGame(name: String, st: Storage): Galo {
+suspend fun startGame(name: String, st: Storage): Galo {
     val player = st.start(name)
     val game = Galo(Board(), player, name)
     return if (player == Player.CIRCLE) st.load(game)
@@ -43,7 +45,7 @@ data class PlayResult(val game: Galo, val error: PlayError)
  * @param st Access to persistent storage operations
  * @return A new game if the play is valid or an error that identifies the problem.
  */
-fun Galo.play(pos: Position, st: Storage): PlayResult {
+fun Galo.play(pos: Position, st: Storage, scope: CoroutineScope): PlayResult {
     val boardRes = board.play(pos, player)
     return if (boardRes==null) PlayResult(this, when {
         board.turn!=player -> PlayError.INVALID_TURN
@@ -51,7 +53,7 @@ fun Galo.play(pos: Position, st: Storage): PlayResult {
         board[pos] != null -> PlayError.OCCUPIED_POSITION
         else -> error("Unexpected Error")
     })
-    else PlayResult(copy(board = boardRes).also { st.save(it) },
+    else PlayResult(copy(board = boardRes).also { scope.launch { st.save(it) } },
         PlayError.NONE
     )
 }

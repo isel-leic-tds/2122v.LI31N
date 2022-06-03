@@ -2,6 +2,8 @@ package isel.leic.tds.galo.storage
 
 import isel.leic.tds.galo.model.*
 import isel.leic.tds.mongoDB.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class MongoStorage(private val driver: MongoDriver) : Storage {
     /**
@@ -14,24 +16,24 @@ class MongoStorage(private val driver: MongoDriver) : Storage {
      */
     private val col = driver.getCollection<Doc>("games")
 
-    override fun start(name: String): Player {
+    override suspend fun start(name: String): Player = withContext(Dispatchers.IO)  {
         val doc = col.getDocument(name)
         if (doc!=null) {
-            if (doc.moves.size <= 1) return Player.CIRCLE
+            if (doc.moves.size <= 1) return@withContext Player.CIRCLE
             col.deleteDocument(name)
         }
         col.insertDocument(Doc(name, emptyList()))
-        return Player.CROSS
+        Player.CROSS
     }
 
-    override fun save(game: Galo) {
+    override suspend fun save(game: Galo) = withContext<Unit>(Dispatchers.IO) {
         col.replaceDocument(Doc(game.name,game.board.moves.map { it.pos.index }))
     }
 
-    override fun load(game: Galo): Galo {
+    override suspend fun load(game: Galo): Galo = withContext(Dispatchers.IO) {
         val doc = col.getDocument(game.name)
         checkNotNull(doc) { "no document in load" }
-        return if (doc.moves.size == game.board.moves.size) game
+        if (doc.moves.size == game.board.moves.size) game
         else game.copy( board = game.board.addMove(doc.moves.last().toPosition()))
     }
 }
