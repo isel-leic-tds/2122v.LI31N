@@ -57,3 +57,7 @@ fun Galo.play(pos: Position, st: Storage, scope: CoroutineScope): PlayResult {
         PlayError.NONE
     )
 }
+
+val Galo.isOver get() = board.winner!=null
+
+val Galo.isYourTurn get() = player == board.turn

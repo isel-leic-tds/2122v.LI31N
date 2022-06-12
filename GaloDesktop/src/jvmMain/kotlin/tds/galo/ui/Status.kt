@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -11,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import isel.leic.tds.galo.model.BOARD_DIM
 import isel.leic.tds.galo.model.Galo
+import isel.leic.tds.galo.model.isYourTurn
 
 /**
  * Shows the game status bar.
@@ -26,11 +28,12 @@ fun StatusView(state: GameState) = Row(
         Text(if (this==null) "Game not started" else "Game: $name")
         if (this!=null) {
             if (board.winner==null)
-                Text(if (player == board.turn) "Its your turn" else "wait for other")
+                Text(if (isYourTurn) "Its your turn" else "wait for other")
             else
                 Text("You ${if (board.winner==player) "Win" else "Lose"}")
             CellView(player,null)
         }
+        if (state.jobAutoRefresh!=null) CircularProgressIndicator()
     }
 }
 

@@ -2,13 +2,10 @@ package tds.galo.ui
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import isel.leic.tds.galo.model.*
 import isel.leic.tds.galo.storage.Storage
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * Current state and logic of the UI. (ViewModel)
@@ -20,6 +17,8 @@ class GameState(val storage: Storage, val scope: CoroutineScope) {
     var openDialogName by mutableStateOf(false)
         private set
     var message by mutableStateOf<String?>(null)
+        private set
+    var jobAutoRefresh by mutableStateOf<Job?>(null)
         private set
 
     fun refresh() {
@@ -41,18 +40,21 @@ class GameState(val storage: Storage, val scope: CoroutineScope) {
      * To call at the start of the game and after each move.
      */
     private fun waitforOther() {
-        val g = game ?: return
-        if (g.player == g.board.turn) return
-        // TODO: The following code is just a prediction.
-        return
-        scope.launch {
-            var ng = g
+        var g = game ?: return
+        if (g.isYourTurn || g.isOver) return
+        jobAutoRefresh = scope.launch {
             do {
                 delay(3000)
-                ng = storage.load(g)
-            } while (ng.board.turn!=g.player)
-            game = ng
+                g = storage.load(g)
+            } while (!g.isYourTurn)
+            game = g
+            jobAutoRefresh = null
         }
+    }
+
+    fun cancelAutoRefresh() {
+        jobAutoRefresh?.cancel()
+        jobAutoRefresh = null
     }
 
     fun play(pos: Position) {

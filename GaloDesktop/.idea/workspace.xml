@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c3028152-23f2-42da-9b6e-9a0baecff0ec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/model/Galo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/model/Galo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/FileStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/FileStorage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/MongoStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/MongoStorage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/Storage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/storage/Storage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GaloApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GaloApp.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GameState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/GameState.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Menu.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Menu.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Status.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvmMain/kotlin/tds/galo/ui/Status.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,17 +64,17 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/palex/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.6.10/a6284476c56bd752eb0020e062c78c930abdc168/kotlin-stdlib-1.6.10-sources.jar&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "full.screen.before.presentation.mode": "false",
+    "last_opened_file_path": "C:/Users/palex/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.runtime/runtime-desktop/1.1.0/b9ab473b2f6d6010a5cf193dada0aca4d402866e/runtime-desktop-1.1.0-sources.jar"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Aulas\TDS\22-22\LI31N\Code\GaloDesktop\src\jvmMain\kotlin\tds\galo\ui" />
